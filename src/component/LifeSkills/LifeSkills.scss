@@ -1,0 +1,58 @@
+.life-skills-wrapper {
+  background: var(--background-one);
+  padding: 64px 0;
+  @media (max-width: 950px) {
+    padding: 32px;
+  }
+  .life-skills-container {
+    h4 {
+      text-align: center;
+    }
+    h2 {
+      margin-top: 24px;
+      text-align: center;
+      font-weight: 100;
+    }
+  }
+  .life-skills-content {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    margin-top: 32px;
+    padding-left: 128px;
+    @media (max-width: 920px) {
+      padding-left: 32px;
+    }
+    @media (max-width: 420px) {
+      padding-left: 8px;
+    }
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+    .life-skills-box {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      img {
+        width: 352px;
+        height: 220px;
+      }
+      h3 {
+        color: var(--text-primary);
+        margin-top: 24px;
+        text-align: center;
+      }
+      p {
+        text-align: center;
+        margin-top: 16px;
+      }
+      .border-right {
+        border-right: 1px solid var(--border);
+        height: 350px;
+      }
+    }
+  }
+}

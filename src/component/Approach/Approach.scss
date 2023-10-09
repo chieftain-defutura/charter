@@ -32,6 +32,9 @@
       @media (max-width: 950px) {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       }
+      @media (max-width: 400px) {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
       .flex-item {
         justify-content: center;
         flex-direction: column;

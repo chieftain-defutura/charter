@@ -1,0 +1,126 @@
+.heroslider-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  .slick-dots {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .heroslider-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    .image-container:nth-child(1) {
+      img {
+        width: 500px;
+        height: 185px;
+        object-fit: cover;
+        object-position: center;
+        z-index: -1;
+        @media (max-width: 980px) {
+          width: 458px;
+          height: 160px;
+        }
+        @media (max-width: 550px) {
+          width: 328px;
+          height: 160px;
+        }
+      }
+      clip-path: polygon(0 0, 100% 0, 92% 99%, 9% 100%);
+      position: relative;
+      &.prev {
+        animation: flip-prev 5s linear;
+        transform-origin: center;
+      }
+      .image {
+        position: absolute;
+        background-color: #0a0a0a;
+        opacity: 0.7;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .image-container:nth-child(2) {
+      img {
+        width: 410px;
+        height: 185px;
+        object-fit: cover;
+        object-position: center;
+        @media (max-width: 980px) {
+          width: 378px;
+          height: 160px;
+        }
+        @media (max-width: 550px) {
+          width: 258px;
+          height: 160px;
+        }
+      }
+      &.current {
+        animation: rotate-current 5s linear;
+        transform-origin: center;
+      }
+    }
+    .image-container:nth-child(3) {
+      clip-path: polygon(8% 0, 93% 0, 100% 100%, 0 99%);
+      position: relative;
+      img {
+        width: 500px;
+        height: 185px;
+        object-fit: cover;
+        object-position: center;
+        @media (max-width: 980px) {
+          width: 458px;
+          height: 160px;
+        }
+        @media (max-width: 550px) {
+          width: 328px;
+          height: 160px;
+        }
+      }
+
+      .image {
+        position: absolute;
+        background-color: #0a0a0a;
+        opacity: 0.7;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+      }
+      &.next {
+        animation: flip-next 5s linear;
+        transform-origin: center;
+      }
+    }
+  }
+
+  @keyframes flip-prev {
+    from {
+      transform: perspective(1000px) rotateY(-180deg);
+    }
+    to {
+      transform: perspective(1000px) rotateY(0deg);
+    }
+  }
+
+  @keyframes flip-next {
+    from {
+      transform: perspective(1000px) rotateY(180deg);
+    }
+    to {
+      transform: perspective(1000px) rotateY(0deg);
+    }
+  }
+  @keyframes rotate-current {
+    from {
+      transform: perspective(1000px) rotateY(180deg);
+    }
+    to {
+      transform: perspective(1000px) rotateY(0deg);
+    }
+  }
+}

@@ -1,0 +1,139 @@
+.curriculum-wrapper {
+  background: var(--background-three);
+  padding: 64px 0;
+  @media (max-width: 950px) {
+    padding: 32px;
+  }
+  .curriculum-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    gap: 64px;
+    @media (max-width: 920px) {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .group-img {
+      img {
+        max-width: 500px;
+        width: 100%;
+        max-height: 500px;
+        height: 100%;
+      }
+      @media (max-width: 920px) {
+        display: none;
+      }
+    }
+    .curriculum-content {
+      h2 {
+        margin: 24px 0;
+        font-weight: 100;
+      }
+    }
+    .responsive-group-img {
+      img {
+        max-width: 500px;
+        width: 100%;
+        max-height: 500px;
+        height: 100%;
+      }
+      @media (min-width: 920px) {
+        display: none;
+      }
+    }
+  }
+  .cluster-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    gap: 32px;
+    margin-top: 32px;
+    @media (max-width: 920px) {
+      grid-template-columns: 1fr;
+    }
+    .box {
+      display: flex;
+      align-items: center;
+      border: 2px dashed #293eff;
+      @media (max-width: 520px) {
+        display: block;
+      }
+      .head {
+        padding: 24px;
+        @media (max-width: 520px) {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 16px;
+          border-bottom: 2px dashed #293eff;
+        }
+        h4 {
+          color: var(--text-primary);
+          font-size: 32px;
+          font-family: "Gilroy-SemiBold";
+          letter-spacing: -1.28px;
+        }
+        h1 {
+          margin-top: -10px;
+          color: #293eff;
+          letter-spacing: -2.56px;
+          font-family: "SpaceGrotesk-Bold";
+          text-align: center;
+          @media (max-width: 700px) {
+            margin-top: 0;
+          }
+        }
+      }
+      .content {
+        border-left: 2px dashed #293eff;
+        padding: 0 24px 24px 24px;
+        .flex-box {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          p {
+            text-transform: uppercase;
+            margin-bottom: 16px;
+          }
+          h3 {
+            color: var(--text-primary);
+          }
+          .border-right {
+            border-right: 1px solid #252525;
+            height: 70px;
+            margin-top: 30px;
+          }
+        }
+        p {
+          margin-top: 24px;
+        }
+        .download {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-top: 24px;
+
+          p {
+            margin-top: 0;
+            color: var(--green);
+            font-family: "Gilroy-SemiBold";
+          }
+        }
+      }
+    }
+    .second-box {
+      border: 2px dashed #8f00ff;
+      .second-head {
+        @media (max-width: 520px) {
+          border-bottom: 2px dashed #8f00ff;
+        }
+        h1 {
+          color: #8f00ff;
+        }
+      }
+      .second-content {
+        border-left: 2px dashed #8f00ff;
+      }
+    }
+  }
+}

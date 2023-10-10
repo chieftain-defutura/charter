@@ -5,10 +5,12 @@ import PartnerAlongside from "./component/PartnerAlongside";
 import Mentor from "./component/Mentor";
 import LifeSkills from "./component/LifeSkills";
 import Curriculum from "./component/Curriculum";
+import Header from "./component/Header";
 
 const App: React.FC = () => {
   return (
     <div>
+      <Header />
       <Approach />
       <Curriculum />
       <LifeSkills />

@@ -53,6 +53,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 32px;
     @media (max-width: 556px) {
       display: block;
     }

@@ -101,6 +101,9 @@
           @media (max-width: 720px) {
             font-size: 14px;
           }
+          @media (max-width: 420px) {
+            white-space: nowrap;
+          }
         }
         p {
           margin-top: 8px;

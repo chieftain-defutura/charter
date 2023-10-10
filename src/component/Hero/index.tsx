@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
                 where your DREAM is our priority.
               </p>
               <div className="enroll">
-                <h5>Enroll now</h5>
+                <h5>Enroll now!</h5>
                 <img src={Arrow} alt="" />
               </div>
             </div>

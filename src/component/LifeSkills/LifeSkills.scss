@@ -30,8 +30,13 @@
     }
 
     &::-webkit-scrollbar {
-      width: 0px;
+      width: 2px;
+      height: 6px;
     }
+    // &::-webkit-scrollbar-thumb {
+    //   background-color: #252525;
+    //   border-radius: 5px;
+    // }
 
     .life-skills-box {
       display: flex;

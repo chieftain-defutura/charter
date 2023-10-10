@@ -58,6 +58,9 @@
             border: 1px solid var(--green);
             padding: 4px 8px;
             max-width: 212px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
             margin-bottom: 16px;
             button {
@@ -66,6 +69,7 @@
               background: transparent;
               color: var(--green);
               font-size: 14px;
+              text-align: center;
             }
             @media (min-width: 950px) {
               display: none;

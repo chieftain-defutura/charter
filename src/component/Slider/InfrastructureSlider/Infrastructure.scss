@@ -12,6 +12,7 @@
       height: 420px;
       object-fit: cover;
       object-position: center;
+
       @media (max-width: 750px) {
         height: 220px;
       }
@@ -29,6 +30,7 @@
       width: 160px;
       height: 100px;
       object-fit: cover;
+
       @media (max-width: 850px) {
         width: 80px;
         height: 50px;

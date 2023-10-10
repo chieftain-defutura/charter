@@ -4,7 +4,7 @@ import InfrastructureSlider from "../Slider/InfrastructureSlider";
 const Infrastructure = () => {
   return (
     <div className="infrastucture-container">
-      <div className="mx">
+      <div className="mx pad">
         <div className="infrastructure-wrapper">
           <InfrastructureSlider />
           <div className="content">

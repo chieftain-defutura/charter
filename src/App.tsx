@@ -7,17 +7,23 @@ import LifeSkills from "./component/LifeSkills";
 import Curriculum from "./component/Curriculum";
 import Hero from "./component/Hero";
 import Infrastructure from "./component/Infrastructure";
+import Header from "./component/Header";
+import Transformation from "./component/Transformation";
+import LifeTimeChance from "./component/LifeTimeChance";
 
 const App: React.FC = () => {
   return (
     <div>
+      <Header />
       <Hero />
+      <Transformation />
       <Approach />
       <Curriculum />
       <LifeSkills />
       <Infrastructure />
       <Mentor />
       <PartnerAlongside />
+      <LifeTimeChance />
       <Footer />
     </div>
   );

@@ -7,7 +7,7 @@ import { ReactComponent as Twitter } from "../../assets/icons/twitter.svg";
 import "./Hero.scss";
 import HeroSlider from "../Slider/HeroSlider";
 
-const Hero = () => {
+const Hero: React.FC = () => {
   const render = (
     <div className="social-media">
       <p>Follow us on</p>

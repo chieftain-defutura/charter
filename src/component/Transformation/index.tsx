@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./Transformation.scss";
 import ImageOne from "../../assets/images/madhu.png";
 import ImageTwo from "../../assets/images/suganya.png";
 import ImageThree from "../../assets/images/vicky.png";
 import DewallLogo from "../../assets/logos/dewall.png";
+import "./Transformation.scss";
 
 const data = [
   {
@@ -47,7 +47,7 @@ const data = [
     date: "23 Mar,2019",
   },
 ];
-const Transformation = () => {
+const Transformation: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const handlePreviousClick = () => {
@@ -93,14 +93,11 @@ const Transformation = () => {
                   src={
                     data[(currentPage - 1 + data.length) % data.length].image
                   }
-                  alt={`Image ${currentPage - 1}`}
+                  alt={`${currentPage - 1}`}
                 />
               </div>
               <div className="image-container current">
-                <img
-                  src={data[currentPage].image}
-                  alt={`Image ${currentPage}`}
-                />
+                <img src={data[currentPage].image} alt={`${currentPage}`} />
               </div>
               <div
                 className={`image-container next ${
@@ -111,7 +108,7 @@ const Transformation = () => {
                 <div className="image"></div>
                 <img
                   src={data[(currentPage + 1) % data.length].image}
-                  alt={`Image ${currentPage + 1}`}
+                  alt={`${currentPage + 1}`}
                 />
               </div>
             </div>

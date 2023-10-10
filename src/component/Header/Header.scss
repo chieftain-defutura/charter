@@ -45,6 +45,12 @@
       @media (max-width: 560px) {
         display: block;
       }
+      h2 {
+        font-weight: 100;
+        @media (max-width: 420px) {
+          font-size: 26px;
+        }
+      }
       .responsive-img {
         display: flex;
         align-items: center;

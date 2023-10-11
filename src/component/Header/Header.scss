@@ -3,7 +3,7 @@
   background: #0a0a0a;
   padding: 0 32px;
   @media (max-width: 420px) {
-    padding: 0 12px;
+    padding: 0 24px;
   }
   .header-wrapper {
     display: flex;
@@ -11,7 +11,7 @@
     .image {
       padding: 8px 0px;
       img {
-        max-width: 213px;
+        max-width: 183px;
         width: 100%;
       }
     }

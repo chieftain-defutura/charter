@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ButtonHTMLAttributes } from "react";
 import "./Button.scss";
 
-interface IButton {
+interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant: "primary" | "secondary";
   size?: "small" | "medium" | "large";
   children: React.ReactNode;
@@ -13,11 +13,13 @@ const Button: React.FC<IButton> = ({
   onClick,
   size,
   children,
+  type = "button",
   ...rest
 }) => {
   return (
     <>
       <button
+        type={type}
         onClick={onClick}
         className={` btn btn-${variant} ${size}`}
         {...rest}

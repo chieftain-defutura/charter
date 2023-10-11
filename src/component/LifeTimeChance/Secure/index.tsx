@@ -24,28 +24,30 @@ const Step2Schema = Yup.object().shape({
   course: Yup.string().required("Course is required"),
 });
 
+const initialValues = {
+  name: "",
+  email: "",
+  phone: "",
+  program: "",
+  time: "",
+  course: "",
+};
+
 const Secure: React.FC<ISecure> = ({ count, setCount }) => {
-  console.log(count);
+  const handleSubmit = (values: typeof initialValues) => {
+    if (count === 1) {
+      setCount(2);
+    } else if (count === 2) {
+      setCount(3);
+    }
+    console.log(values);
+  };
   return (
     <div className="secure-container">
       <Formik
-        initialValues={{
-          name: "",
-          email: "",
-          phone: "",
-          program: "",
-          time: "",
-          course: "",
-        }}
+        initialValues={initialValues}
         validationSchema={count === 1 ? Step1Schema : Step2Schema}
-        onSubmit={(values) => {
-          if (count === 1) {
-            setCount(2);
-          } else if (count === 2) {
-            setCount(3);
-          }
-          console.log("values", values);
-        }}
+        onSubmit={handleSubmit}
       >
         <Form>
           {count === 1 && (
@@ -148,7 +150,7 @@ const Secure: React.FC<ISecure> = ({ count, setCount }) => {
                 </div>
               </div>
 
-              <div className="btn" onClick={() => setCount(3)}>
+              <div className="btn">
                 <button type="submit">Next</button>
               </div>
 

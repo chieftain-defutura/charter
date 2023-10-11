@@ -110,13 +110,26 @@
       gap: 24px;
       width: 100%;
       height: 100%;
-
-      h2 {
-        span {
+      .head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        @media (max-width: 720px) {
+          display: block;
+          gap: 5px;
+        }
+        h3 {
           color: var(--green);
+          font-family: "Gilroy-Regular";
+          font-weight: 600;
+          font-size: 32px;
+          letter-spacing: 0.5px;
+        }
+        h2 {
           font-family: Gilroy-Regular;
           font-weight: 600;
           font-size: 32px;
+          letter-spacing: 0.5px;
         }
       }
     }

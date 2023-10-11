@@ -33,6 +33,13 @@ body {
   margin: 0 auto;
 }
 
+.error {
+  color: red;
+  font-size: 12px;
+  font-family: "Gilroy-Medium";
+  font-weight: 100;
+}
+
 .pad {
   padding: 0 128px;
   @media (max-width: 950px) {

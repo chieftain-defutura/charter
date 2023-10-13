@@ -1,147 +1,167 @@
 import React from "react";
-import "./Secure.scss";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { ReactComponent as Tick } from "../../../assets/icons/tick.svg";
 import Mail from "../../../assets/icons/mail.svg";
 import User from "../../../assets/icons/user.svg";
 import Phone from "../../../assets/icons/phone.svg";
-import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
-import Button from "../../Button";
-import { ReactComponent as Tick } from "../../../assets/icons/tick.svg";
+import "./Secure.scss";
+
 interface ISecure {
   count: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
 }
+
+const Step1Schema = Yup.object().shape({
+  name: Yup.string().required("Name is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  phone: Yup.string().required("Phone number is required"),
+});
+
+const Step2Schema = Yup.object().shape({
+  program: Yup.string().required("Program is required"),
+  time: Yup.string().required("Time is required"),
+  course: Yup.string().required("Course is required"),
+});
+
 const initialValues = {
   name: "",
   email: "",
   phone: "",
   program: "",
-  schedule: "",
-  courses: "",
+  time: "",
+  course: "",
 };
-const validationSchema = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  phone: Yup.number().required("Phone number is required"),
-  program: Yup.string(),
-  schedule: Yup.string(),
-  courses: Yup.string(),
-});
+
 const Secure: React.FC<ISecure> = ({ count, setCount }) => {
   const handleSubmit = (values: typeof initialValues) => {
+    if (count === 1) {
+      setCount(2);
+    } else if (count === 2) {
+      setCount(3);
+    }
     console.log(values);
   };
   return (
     <div className="secure-container">
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        validationSchema={count === 1 ? Step1Schema : Step2Schema}
         onSubmit={handleSubmit}
       >
-        {({ handleBlur, isSubmitting }) => (
-          <Form>
-            {count === 1 && (
-              <div className="container-one">
-                <div className="input-container">
-                  <div className="input-wrapper">
-                    <div className="title">What should we call you here?</div>
-                    <div className="input">
-                      <img src={User} alt="" />
-                      <Field type="text" name="name" placeholder="Name" />
-                    </div>
+        <Form>
+          {count === 1 && (
+            <div className="container-one">
+              <div className="input-container">
+                <div className="input-wrapper">
+                  <div className="title">What should we call you here?</div>
+                  <div className="input">
+                    <img src={User} alt="" />
+                    <Field type="text" name="name" placeholder="Name" />
                   </div>
-                  <div className="input-wrapper">
-                    <div className="title">
-                      We keep it light and send only what matters!
-                    </div>
-                    <div className="input">
-                      <img src={Mail} alt="" />
-                      <Field name="email" type="text" placeholder="E-mail" />
-                    </div>
-                  </div>
-                  <div className="input-wrapper">
-                    <div className="title">
-                      Can you drop your WhatsApp number ?
-                    </div>
-                    <div className="input">
-                      <img src={Phone} alt="" />
-                      <Field name="phone" type="text" placeholder="Phone" />
-                    </div>
-                  </div>
+                  <ErrorMessage name="name" component="div" className="error" />
                 </div>
-
-                <Button
-                  variant="primary"
-                  children="Next"
-                  onClick={() => setCount(2)}
-                />
-                <div className="router">
-                  <h1>01</h1>
-                  <div className="border"></div>
-                  <h1>02</h1>
+                <div className="input-wrapper">
+                  <div className="title">
+                    We keep it light and send only what matters!
+                  </div>
+                  <div className="input">
+                    <img src={Mail} alt="" />
+                    <Field type="text" name="email" placeholder="E-mail" />
+                  </div>
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="error"
+                  />
+                </div>
+                <div className="input-wrapper">
+                  <div className="title">
+                    Can you drop your WhatsApp number ?
+                  </div>
+                  <div className="input">
+                    <img src={Phone} alt="" />
+                    <Field type="text" name="phone" placeholder="Phone" />
+                  </div>
+                  <ErrorMessage
+                    name="phone"
+                    component="div"
+                    className="error"
+                  />
                 </div>
               </div>
-            )}
 
-            {count === 2 && (
-              <div className="container-one">
-                <div className="input-container">
-                  <div className="input-wrapper">
-                    <div className="title">
-                      Go ahead and pick the program that suits you.
-                    </div>
-                    <div className="input">
-                      <Field
-                        name="program"
-                        type="text"
-                        placeholder="Remote programme for fresher graduates"
-                      />
-                    </div>
-                  </div>
-                  <div className="input-wrapper">
-                    <div className="title">
-                      Which time frame suits you best for your classes, AM or
-                      PM?
-                    </div>
-                    <div className="input">
-                      <Field
-                        name="schedule"
-                        type="text"
-                        placeholder="Morning batch"
-                      />
-                    </div>
-                  </div>
+              <div className="btn" onClick={() => setCount(2)}>
+                <button type="submit">Next</button>
+              </div>
+              <div className="router">
+                <h1>01</h1>
+                <div className="border"></div>
+                <h1>02</h1>
+              </div>
+            </div>
+          )}
 
-                  <div className="input-wrapper">
-                    <div className="title">
-                      Make your choice among the available courses.
-                    </div>
-                    <div className="input">
-                      <Field
-                        name="courses"
-                        type="text"
-                        placeholder="Cluster 1"
-                      />
-                    </div>
+          {count === 2 && (
+            <div className="container-one">
+              <div className="input-container">
+                <div className="input-wrapper">
+                  <div className="title">
+                    Go ahead and pick the program that suits you.
                   </div>
+                  <div className="input">
+                    <Field
+                      type="text"
+                      name="program"
+                      placeholder="Remote programme for fresher graduates"
+                    />
+                  </div>
+                  <ErrorMessage
+                    name="program"
+                    component="div"
+                    className="error"
+                  />
                 </div>
-                <Button
-                  variant="primary"
-                  type="submit"
-                  children="Next"
-                  onClick={() => setCount(3)}
-                  disabled={isSubmitting}
-                  style={{ opacity: isSubmitting ? "0.6" : "" }}
-                />
-                <div className="router">
-                  <h1>01</h1>
-                  <div className="border"></div>
-                  <h1>02</h1>
+                <div className="input-wrapper">
+                  <div className="title">
+                    Which time frame suits you best for your classes, AM or PM?
+                  </div>
+                  <div className="input">
+                    <Field
+                      type="text"
+                      name="time"
+                      placeholder="Morning batch"
+                    />
+                  </div>
+                  <ErrorMessage name="time" component="div" className="error" />
+                </div>
+                <div className="input-wrapper">
+                  <div className="title">
+                    Make your choice among the available courses.
+                  </div>
+                  <div className="input">
+                    <Field type="text" name="course" placeholder="Cluster 1" />
+                  </div>
+                  <ErrorMessage
+                    name="course"
+                    component="div"
+                    className="error"
+                  />
                 </div>
               </div>
-            )}
-          </Form>
-        )}
+
+              <div className="btn">
+                <button type="submit">Next</button>
+              </div>
+
+              <div className="router">
+                <h1>01</h1>
+                <div className="border"></div>
+                <h1>02</h1>
+              </div>
+            </div>
+          )}
+        </Form>
       </Formik>
 
       {count === 3 && (

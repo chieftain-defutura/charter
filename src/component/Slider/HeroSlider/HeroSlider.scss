@@ -28,6 +28,10 @@ input[type="radio"] {
     left: 100%;
     top: 130%;
   }
+  @media (max-width: 520px) {
+    top: 168%;
+    left: 101%;
+  }
 }
 
 input[type="radio"]:nth-child(5) {

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+// import emailjs from "@emailjs/browser";
 import { ReactComponent as Tick } from "../../../assets/icons/tick.svg";
 import Mail from "../../../assets/icons/mail.svg";
 import User from "../../../assets/icons/user.svg";
@@ -33,15 +34,44 @@ const initialValues = {
   course: "",
 };
 
+const option = ["one", "two", "tree"];
+
 const Secure: React.FC<ISecure> = ({ count, setCount }) => {
-  const handleSubmit = (values: typeof initialValues) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleOptionClick = (option: string) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
+
+  const handleSubmit = async (values: typeof initialValues) => {
     if (count === 1) {
       setCount(2);
     } else if (count === 2) {
       setCount(3);
     }
     console.log(values);
+
+    // const emailParams = {
+    //   to_email: "subaap86@gmail.com",
+    //   subject: "details",
+    //   message: { values },
+    // };
+
+    // const response = await emailjs.send(
+    //   "service_2ms6mim",
+    //   "template_mk8gnsi",
+    //   emailParams,
+    //   "85jl960Zew5smr0XV"
+    // );
+    // console.log("Email sent", response);
   };
+
   return (
     <div className="secure-container">
       <Formik
@@ -109,20 +139,40 @@ const Secure: React.FC<ISecure> = ({ count, setCount }) => {
                   <div className="title">
                     Go ahead and pick the program that suits you.
                   </div>
-                  <div className="input">
+                  {/* <div className="input">
                     <Field
                       type="text"
                       name="program"
                       placeholder="Remote programme for fresher graduates"
                     />
-                  </div>
-                  <ErrorMessage
+                  </div> */}
+                  {/* <ErrorMessage
                     name="program"
                     component="div"
                     className="error"
-                  />
+                  /> */}
+                  <div className="drop-down-wrapper">
+                    <div
+                      className="drop-down-select-content"
+                      onClick={toggleDropdown}
+                    >
+                      <p> {selectedOption || "Select an option"}</p>
+                    </div>
+                    {isOpen && (
+                      <div className="drop-down-options">
+                        {option.map((option, index) => (
+                          <div
+                            key={index}
+                            onClick={() => handleOptionClick(option)}
+                          >
+                            <p>{option}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
-                <div className="input-wrapper">
+                {/* <div className="input-wrapper">
                   <div className="title">
                     Which time frame suits you best for your classes, AM or PM?
                   </div>
@@ -147,7 +197,7 @@ const Secure: React.FC<ISecure> = ({ count, setCount }) => {
                     component="div"
                     className="error"
                   />
-                </div>
+                </div> */}
               </div>
 
               <div className="btn">

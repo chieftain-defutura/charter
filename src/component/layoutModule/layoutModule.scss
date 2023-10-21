@@ -29,10 +29,10 @@
     box-sizing: border-box;
     border-radius: 10px;
     background-color: #141414;
-    @media (max-width: 520px) {
-      max-width: 270px;
-      width: 100%;
-    }
+    // @media (max-width: 520px) {
+    //   max-width: 270px;
+    //   width: 100%;
+    // }
     .close-icon {
       display: flex;
       cursor: pointer;

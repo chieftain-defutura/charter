@@ -17,6 +17,40 @@
           font-size: 14px;
           text-align: left;
         }
+        .drop-down-wrapper {
+          position: relative;
+          .drop-down-select-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            border: 1px solid var(--border);
+            width: 100%;
+            padding: 16px;
+            cursor: pointer;
+            p {
+              color: #999;
+              font-size: 12px;
+              font-family: "Gilroy-Medium";
+            }
+          }
+          .drop-down-options {
+            border: 1px solid var(--border);
+            background: var(--border);
+            // padding: 16px;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            p {
+              padding: 8px 18px;
+              cursor: pointer;
+              &:hover {
+                background: #141414;
+              }
+            }
+          }
+        }
         .input {
           display: flex;
           align-items: center;

@@ -6,6 +6,7 @@ import Secure from "./Secure";
 
 const LifeTimeChance = () => {
   const [count, setCount] = useState(1);
+
   return (
     <div className="lifetimechance-container">
       <div className="mx">

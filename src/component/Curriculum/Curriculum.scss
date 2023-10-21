@@ -13,6 +13,64 @@
       grid-template-columns: 1fr;
       gap: 10px;
     }
+    // .logo-rotate-wrapper {
+    //   position: relative;
+    //   z-index: 1;
+    //   .group-img {
+    //     img {
+    //       max-width: 500px;
+    //       width: 100%;
+    //       max-height: 500px;
+    //       height: 100%;
+    //     }
+
+    //     @media (max-width: 920px) {
+    //       display: none;
+    //     }
+    //   }
+    //   .logo-rotate {
+    //     .js-icon {
+    //       position: absolute;
+    //       top: 2%;
+    //       left: 5%;
+    //     }
+    //     .react-icon {
+    //       position: absolute;
+    //       top: 24%;
+    //       left: -6%;
+    //     }
+    //     .qraphql-icon {
+    //       position: absolute;
+    //       bottom: 16%;
+    //       left: -2%;
+    //     }
+    //     .html-icon {
+    //       position: absolute;
+    //       top: -7%;
+    //       left: 32%;
+    //     }
+    //     .css-icon {
+    //       position: absolute;
+    //       top: 3%;
+    //       left: 60%;
+    //     }
+    //     .express-icon {
+    //       position: absolute;
+    //       bottom: 0;
+    //       left: 25%;
+    //     }
+    //     .websocket-icon {
+    //       position: absolute;
+    //       top: 26%;
+    //       left: 67%;
+    //     }
+    //     .mongo-icon {
+    //       position: absolute;
+    //       bottom: 16%;
+    //       left: 72%;
+    //     }
+    //   }
+    // }
     .group-img {
       img {
         animation: App-logo-spin infinite 20s linear;
@@ -21,14 +79,14 @@
         max-height: 500px;
         height: 100%;
       }
-      @keyframes App-logo-spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
+      // @keyframes App-logo-spin {
+      //   from {
+      //     transform: rotate(0deg);
+      //   }
+      //   to {
+      //     transform: rotate(360deg);
+      //   }
+      // }
       @media (max-width: 920px) {
         display: none;
       }
@@ -47,14 +105,14 @@
         max-height: 220px;
         height: 100%;
       }
-      @keyframes App-logo-spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
+      // @keyframes App-logo-spin {
+      //   from {
+      //     transform: rotate(0deg);
+      //   }
+      //   to {
+      //     transform: rotate(360deg);
+      //   }
+      // }
       @media (min-width: 920px) {
         display: none;
       }

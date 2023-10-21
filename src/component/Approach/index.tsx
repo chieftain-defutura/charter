@@ -4,7 +4,7 @@ import { ApproachData } from "../../utils/data/ApproachData";
 
 const Approach: React.FC = () => {
   return (
-    <div className="approach-wrapper">
+    <div className="approach-wrapper" id="approach">
       <div className="mx pad">
         <div className="approach-container">
           <div>

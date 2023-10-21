@@ -1,13 +1,53 @@
 import React from "react";
 import { ReactComponent as Download } from "../../assets/icons/download.svg";
+// import { ReactComponent as JsIcon } from "../../assets/icons/js.logo.svg";
+// import { ReactComponent as ReactIcon } from "../../assets/icons/react-icon.svg";
+// import { ReactComponent as QraphqlIcon } from "../../assets/icons/graphqul.svg";
+// import { ReactComponent as HtmlIcon } from "../../assets/icons/html-icon.svg";
+// import { ReactComponent as CssIcon } from "../../assets/icons/cssI-icon.svg";
+// import { ReactComponent as ExpressIcon } from "../../assets/icons/Express-icon.svg";
+// import { ReactComponent as WebsocketIcon } from "../../assets/icons/websocket.svg";
+// import { ReactComponent as MongoIcon } from "../../assets/icons/mongo.svg";
+// import AnimateGroupImg from "../../assets/images/animateGroup.png";
 import GroupImg from "../../assets/images/Group.png";
 import "./Curriculum.scss";
 
 const Curriculum: React.FC = () => {
   return (
-    <div className="curriculum-wrapper">
+    <div className="curriculum-wrapper" id="curriculum">
       <div className="mx pad">
         <div className="curriculum-container">
+          {/* <div className="logo-rotate-wrapper">
+            <div className="group-img">
+              <img src={AnimateGroupImg} alt="" />
+            </div>
+            <div className="logo-rotate">
+              <div className="js-icon">
+                <JsIcon />
+              </div>
+              <div className="react-icon">
+                <ReactIcon />
+              </div>
+              <div className="qraphql-icon">
+                <QraphqlIcon />
+              </div>
+              <div className="html-icon">
+                <HtmlIcon />
+              </div>
+              <div className="css-icon">
+                <CssIcon />
+              </div>
+              <div className="express-icon">
+                <ExpressIcon />
+              </div>
+              <div className="websocket-icon">
+                <WebsocketIcon />
+              </div>
+              <div className="mongo-con">
+                <MongoIcon />
+              </div>
+            </div>
+          </div> */}
           <div className="group-img">
             <img src={GroupImg} alt="" />
           </div>

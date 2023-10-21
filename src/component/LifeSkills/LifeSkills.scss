@@ -47,6 +47,7 @@
         width: 352px;
         height: 220px;
         cursor: pointer;
+        object-fit: contain;
         transition: all 0.5s ease-in-out;
         &:hover {
           transform: scale(1.1);

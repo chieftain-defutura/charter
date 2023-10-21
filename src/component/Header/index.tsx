@@ -18,17 +18,47 @@ const Header: React.FC = () => {
     setIsActive(false);
   };
   return (
-    <div className="header-container">
-      <div className="mx">
-        <div className="header-wrapper">
-          <div className="image">
-            <img src={Logo} alt="" />
-          </div>
-          <div className="access" onClick={handleToggle}>
-            <img src={Access} alt="" />
-            <p>Access</p>
+    <>
+      <div className="header-container">
+        <div className="mx">
+          <div className="header-wrapper">
+            <div className="image">
+              <img src={Logo} alt="" />
+            </div>
+            <div className="navigation-content">
+              <a href="#over-view">
+                <p>Overview</p>
+              </a>
+              <a href="#transformation">
+                <p>Transformation</p>
+              </a>
+              <a href="#approach">
+                <p>Approach</p>
+              </a>
+              <a href="#curriculum">
+                <p>Curriculum</p>
+              </a>
+            </div>
+            <div className="access" onClick={handleToggle}>
+              <img src={Access} alt="" />
+              <p>Access</p>
+            </div>
           </div>
         </div>
+      </div>
+      <div className="responsive-header-navigation">
+        <a href="#over-view">
+          <p>Overview</p>
+        </a>
+        <a href="#transformation">
+          <p>Transformation</p>
+        </a>
+        <a href="#approach">
+          <p>Approach</p>
+        </a>
+        <a href="#curriculum">
+          <p>Curriculum</p>
+        </a>
       </div>
       {active && (
         <LayoutModule handleToggle={handleToggle} className="layout-module">
@@ -43,7 +73,7 @@ const Header: React.FC = () => {
             <img src={AccessTwo} alt="" className="access-img" />
           </div>
           <a
-            href="https://main-lander.netlify.app/"
+            href="https://charter-lander.netlify.app/"
             target="_blank"
             rel="noreferrer"
           >
@@ -54,7 +84,7 @@ const Header: React.FC = () => {
           </a>
         </LayoutModule>
       )}
-    </div>
+    </>
   );
 };
 

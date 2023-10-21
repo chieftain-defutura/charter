@@ -1,6 +1,7 @@
 import ImageOne from "../assets/images/img-1.png";
 import ImageTwo from "../assets/images/img-2.png";
 import ImageThree from "../assets/images/img-3.png";
+import ImageFour from "../assets/images/img-4.png";
 
 export const LifeSkillsData = [
   {
@@ -22,7 +23,7 @@ export const LifeSkillsData = [
       "Mock interviews are conducted weekly once (every Friday) in face to face mode and online mode simultaneously.",
   },
   {
-    image: ImageOne,
+    image: ImageFour,
     title: "Team Collaboration",
     description:
       "In this session, we make you do projects in teams to facilitate collaborative teamwork which  leads to success for everyone.",

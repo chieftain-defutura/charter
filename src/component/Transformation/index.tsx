@@ -74,12 +74,14 @@ const Transformation: React.FC = () => {
     };
   }, []);
   return (
-    <div className="transformation-container">
+    <div className="transformation-container" id="transformation">
       <div className="mx">
         <div className="overlay"></div>
         <div className="transformation-wrapper">
           <div className="content">
-            <span>transformation</span>
+            <h3 style={{ marginBottom: "18px" }}>
+              <span>transformation</span>
+            </h3>
             <h2>Listen to those who turned their imaginations into reality.</h2>
           </div>
           <div className="slider">

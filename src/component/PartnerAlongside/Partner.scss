@@ -1,6 +1,7 @@
 .partner-wrapper {
   background: var(--background-three);
   padding: 64px 242px;
+
   @media (max-width: 1024px) {
     padding: 64px 128px;
   }
@@ -8,6 +9,9 @@
     padding: 32px;
   }
   .partner-container {
+    max-width: 1384px;
+    width: 100%;
+    margin: 0 auto;
     h2 {
       text-align: center;
     }
@@ -22,6 +26,8 @@
         grid-template-columns: 1fr;
       }
       .sam-content {
+        display: flex;
+        flex-direction: column;
         @media (max-width: 720px) {
           display: none;
         }

@@ -1,8 +1,8 @@
 import React from "react";
 import Arrow from "../../assets/icons/Arrow.svg";
 import { ReactComponent as Instagram } from "../../assets/icons/instagram.svg";
-import { ReactComponent as Linkedin } from "../../assets/icons/linkedin.svg";
-import { ReactComponent as Twitter } from "../../assets/icons/twitter.svg";
+// import { ReactComponent as Linkedin } from "../../assets/icons/linkedin.svg";
+// import { ReactComponent as Twitter } from "../../assets/icons/twitter.svg";
 import HeroSlider from "../Slider/HeroSlider";
 import "./Hero.scss";
 
@@ -12,31 +12,31 @@ const Hero: React.FC = () => {
       <p>Follow us on</p>
       <div className="icons">
         <a
-          href="https://www.instagram.com/reel/CyBdIIYPlWc/?igshid=MzRlODBiNWFlZA=="
+          href="https://instagram.com/dehustle.institute?igshid=MzNlNGNkZWQ4Mg=="
           target="_blank"
           rel="noreferrer"
         >
           <Instagram />
         </a>
-        <a
+        {/* <a
           href="https://www.linkedin.com/company/dewallstreet-capital/"
           target="_blank"
           rel="noreferrer"
         >
           <Linkedin />
-        </a>
-        <a
+        </a> */}
+        {/* <a
           href="https://twitter.com/Dewallstreet_"
           target="_blank"
           rel="noreferrer"
         >
           <Twitter />
-        </a>
+        </a> */}
       </div>
     </div>
   );
   return (
-    <div className="hero-container">
+    <div className="hero-container" id="over-view">
       <div className="mx">
         <div className="hero-wrapper">
           <div className="container-one">
@@ -53,7 +53,7 @@ const Hero: React.FC = () => {
                 where your DREAM is our priority.
               </p>
               <a
-                href="https://main-lander.netlify.app/"
+                href="https://dehustle.institute/"
                 target="_blank"
                 rel="noreferrer"
               >

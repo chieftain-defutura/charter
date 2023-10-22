@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 // import emailjs from "@emailjs/browser";
+import { ReactComponent as ChevronLeftArrow } from "../../../assets/icons/chevron-left.svg";
 import { ReactComponent as Tick } from "../../../assets/icons/tick.svg";
 import Mail from "../../../assets/icons/mail.svg";
 import User from "../../../assets/icons/user.svg";
@@ -34,19 +35,47 @@ const initialValues = {
   course: "",
 };
 
-const option = ["one", "two", "tree"];
+const optionOne = ["Remote programme for fresher graduates"];
+
+const optionTwo = ["Morning batch", "Evening batch"];
+
+const optionThree = ["Cluster 1", "Cluster 2"];
 
 const Secure: React.FC<ISecure> = ({ count, setCount }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [selectedOptionOne, setSelectedOptionOne] = useState<string>("");
+  const [selectedOptionTwo, setSelectedOptionTwo] = useState<string>("");
+  const [selectedOptionThree, setSelectedOptionThree] = useState<string>("");
+  const [isOpenOne, setIsOpenOne] = useState(false);
+  const [isOpenTwo, setIsOpenTwo] = useState(false);
+  const [isOpenThree, setIsOpenThree] = useState(false);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+  const toggleDropdown = (dropdown: number) => {
+    if (dropdown === 1) {
+      setIsOpenOne(!isOpenOne);
+      setIsOpenTwo(false);
+      setIsOpenThree(false);
+    } else if (dropdown === 2) {
+      setIsOpenTwo(!isOpenTwo);
+      setIsOpenOne(false);
+      setIsOpenThree(false);
+    } else if (dropdown === 3) {
+      setIsOpenThree(!isOpenThree);
+      setIsOpenOne(false);
+      setIsOpenTwo(false);
+    }
   };
 
-  const handleOptionClick = (option: string) => {
-    setSelectedOption(option);
-    setIsOpen(false);
+  const handleOptionClick = (option: string, dropdown: number) => {
+    if (dropdown === 1) {
+      setSelectedOptionOne(option);
+      setIsOpenOne(false);
+    } else if (dropdown === 2) {
+      setSelectedOptionTwo(option);
+      setIsOpenTwo(false);
+    } else if (dropdown === 3) {
+      setSelectedOptionThree(option);
+      setIsOpenThree(false);
+    }
   };
 
   const handleSubmit = async (values: typeof initialValues) => {
@@ -139,31 +168,21 @@ const Secure: React.FC<ISecure> = ({ count, setCount }) => {
                   <div className="title">
                     Go ahead and pick the program that suits you.
                   </div>
-                  {/* <div className="input">
-                    <Field
-                      type="text"
-                      name="program"
-                      placeholder="Remote programme for fresher graduates"
-                    />
-                  </div> */}
-                  {/* <ErrorMessage
-                    name="program"
-                    component="div"
-                    className="error"
-                  /> */}
+
                   <div className="drop-down-wrapper">
                     <div
                       className="drop-down-select-content"
-                      onClick={toggleDropdown}
+                      onClick={() => toggleDropdown(1)}
                     >
-                      <p> {selectedOption || "Select an option"}</p>
+                      <p>{selectedOptionOne || "Select an option"}</p>
+                      <ChevronLeftArrow />
                     </div>
-                    {isOpen && (
+                    {isOpenOne && (
                       <div className="drop-down-options">
-                        {option.map((option, index) => (
+                        {optionOne.map((option, index) => (
                           <div
                             key={index}
-                            onClick={() => handleOptionClick(option)}
+                            onClick={() => handleOptionClick(option, 1)}
                           >
                             <p>{option}</p>
                           </div>
@@ -172,32 +191,58 @@ const Secure: React.FC<ISecure> = ({ count, setCount }) => {
                     )}
                   </div>
                 </div>
-                {/* <div className="input-wrapper">
+                <div className="input-wrapper">
                   <div className="title">
                     Which time frame suits you best for your classes, AM or PM?
                   </div>
-                  <div className="input">
-                    <Field
-                      type="text"
-                      name="time"
-                      placeholder="Morning batch"
-                    />
+                  <div className="drop-down-wrapper">
+                    <div
+                      className="drop-down-select-content"
+                      onClick={() => toggleDropdown(2)}
+                    >
+                      <p>{selectedOptionTwo || "Select a batch"}</p>
+                      <ChevronLeftArrow />
+                    </div>
+                    {isOpenTwo && (
+                      <div className="drop-down-options">
+                        {optionTwo.map((option, index) => (
+                          <div
+                            key={index}
+                            onClick={() => handleOptionClick(option, 2)}
+                          >
+                            <p>{option}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                  <ErrorMessage name="time" component="div" className="error" />
                 </div>
                 <div className="input-wrapper">
                   <div className="title">
                     Make your choice among the available courses.
                   </div>
-                  <div className="input">
-                    <Field type="text" name="course" placeholder="Cluster 1" />
+                  <div className="drop-down-wrapper">
+                    <div
+                      className="drop-down-select-content"
+                      onClick={() => toggleDropdown(3)}
+                    >
+                      <p>{selectedOptionThree || "Select a Cluster"}</p>
+                      <ChevronLeftArrow />
+                    </div>
+                    {isOpenThree && (
+                      <div className="drop-down-options">
+                        {optionThree.map((option, index) => (
+                          <div
+                            key={index}
+                            onClick={() => handleOptionClick(option, 3)}
+                          >
+                            <p>{option}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                  <ErrorMessage
-                    name="course"
-                    component="div"
-                    className="error"
-                  />
-                </div> */}
+                </div>
               </div>
 
               <div className="btn">

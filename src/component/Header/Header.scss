@@ -78,12 +78,17 @@
 }
 .layout-module {
   padding: 0 24px 24px;
+  .close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
   .access-img {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
-    margin-top: -10px;
+    margin-top: 42px;
     img {
       max-width: 116px;
       width: 100%;

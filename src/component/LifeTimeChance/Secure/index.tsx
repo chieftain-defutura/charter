@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 import { ReactComponent as ChevronLeftArrow } from "../../../assets/icons/chevron-left.svg";
 import { ReactComponent as Tick } from "../../../assets/icons/tick.svg";
 import Mail from "../../../assets/icons/mail.svg";
@@ -21,9 +21,9 @@ const Step1Schema = Yup.object().shape({
 });
 
 const Step2Schema = Yup.object().shape({
-  program: Yup.string().required("Program is required"),
-  time: Yup.string().required("Time is required"),
-  course: Yup.string().required("Course is required"),
+  program: Yup.string(),
+  time: Yup.string(),
+  course: Yup.string(),
 });
 
 const initialValues = {
@@ -79,28 +79,34 @@ const Secure: React.FC<ISecure> = ({ count, setCount }) => {
   };
 
   const handleSubmit = async (values: typeof initialValues) => {
-    if (count === 1) {
-      setCount(2);
-    } else if (count === 2) {
+    try {
       setCount(3);
+      const emailParams = {
+        to_email: "subaap86@gmail.com",
+        subject: "details",
+        message: `username:${values.name}, 
+          userMail:${values.email},
+           userPhoneNumber:${values.phone},
+           program:${selectedOptionOne},
+           batch:${selectedOptionTwo},
+           cluster:${selectedOptionThree}`,
+        from_name: values.name,
+        to_name: "dehustle",
+      };
+
+      const response = await emailjs.send(
+        "service_ye4n5dl",
+        "template_agvcl0k",
+        emailParams,
+        "85jl960Zew5smr0XV"
+      );
+      console.log("Email sent", response);
+
+      console.log(values);
+    } catch (error) {
+      console.log(error);
     }
-    console.log(values);
-
-    // const emailParams = {
-    //   to_email: "subaap86@gmail.com",
-    //   subject: "details",
-    //   message: { values },
-    // };
-
-    // const response = await emailjs.send(
-    //   "service_2ms6mim",
-    //   "template_mk8gnsi",
-    //   emailParams,
-    //   "85jl960Zew5smr0XV"
-    // );
-    // console.log("Email sent", response);
   };
-
   return (
     <div className="secure-container">
       <Formik
@@ -108,155 +114,163 @@ const Secure: React.FC<ISecure> = ({ count, setCount }) => {
         validationSchema={count === 1 ? Step1Schema : Step2Schema}
         onSubmit={handleSubmit}
       >
-        <Form>
-          {count === 1 && (
-            <div className="container-one">
-              <div className="input-container">
-                <div className="input-wrapper">
-                  <div className="title">What should we call you here?</div>
-                  <div className="input">
-                    <img src={User} alt="" />
-                    <Field type="text" name="name" placeholder="Name" />
-                  </div>
-                  <ErrorMessage name="name" component="div" className="error" />
-                </div>
-                <div className="input-wrapper">
-                  <div className="title">
-                    We keep it light and send only what matters!
-                  </div>
-                  <div className="input">
-                    <img src={Mail} alt="" />
-                    <Field type="text" name="email" placeholder="E-mail" />
-                  </div>
-                  <ErrorMessage
-                    name="email"
-                    component="div"
-                    className="error"
-                  />
-                </div>
-                <div className="input-wrapper">
-                  <div className="title">
-                    Can you drop your WhatsApp number ?
-                  </div>
-                  <div className="input">
-                    <img src={Phone} alt="" />
-                    <Field type="text" name="phone" placeholder="Phone" />
-                  </div>
-                  <ErrorMessage
-                    name="phone"
-                    component="div"
-                    className="error"
-                  />
-                </div>
-              </div>
-
-              <div className="btn" onClick={() => setCount(2)}>
-                <button type="submit">Next</button>
-              </div>
-              <div className="router">
-                <h1>01</h1>
-                <div className="border"></div>
-                <h1>02</h1>
-              </div>
-            </div>
-          )}
-
-          {count === 2 && (
-            <div className="container-one">
-              <div className="input-container">
-                <div className="input-wrapper">
-                  <div className="title">
-                    Go ahead and pick the program that suits you.
-                  </div>
-
-                  <div className="drop-down-wrapper">
-                    <div
-                      className="drop-down-select-content"
-                      onClick={() => toggleDropdown(1)}
-                    >
-                      <p>{selectedOptionOne || "Select an option"}</p>
-                      <ChevronLeftArrow />
+        {({ errors }) => (
+          <Form>
+            {count === 1 && (
+              <div className="container-one">
+                <div className="input-container">
+                  <div className="input-wrapper">
+                    <div className="title">What should we call you here?</div>
+                    <div className="input">
+                      <img src={User} alt="" />
+                      <Field type="text" name="name" placeholder="Name" />
                     </div>
-                    {isOpenOne && (
-                      <div className="drop-down-options">
-                        {optionOne.map((option, index) => (
-                          <div
-                            key={index}
-                            onClick={() => handleOptionClick(option, 1)}
-                          >
-                            <p>{option}</p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                    <ErrorMessage
+                      name="name"
+                      component="div"
+                      className="error"
+                    />
                   </div>
-                </div>
-                <div className="input-wrapper">
-                  <div className="title">
-                    Which time frame suits you best for your classes, AM or PM?
-                  </div>
-                  <div className="drop-down-wrapper">
-                    <div
-                      className="drop-down-select-content"
-                      onClick={() => toggleDropdown(2)}
-                    >
-                      <p>{selectedOptionTwo || "Select a batch"}</p>
-                      <ChevronLeftArrow />
+                  <div className="input-wrapper">
+                    <div className="title">
+                      We keep it light and send only what matters!
                     </div>
-                    {isOpenTwo && (
-                      <div className="drop-down-options">
-                        {optionTwo.map((option, index) => (
-                          <div
-                            key={index}
-                            onClick={() => handleOptionClick(option, 2)}
-                          >
-                            <p>{option}</p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <div className="input-wrapper">
-                  <div className="title">
-                    Make your choice among the available courses.
-                  </div>
-                  <div className="drop-down-wrapper">
-                    <div
-                      className="drop-down-select-content"
-                      onClick={() => toggleDropdown(3)}
-                    >
-                      <p>{selectedOptionThree || "Select a Cluster"}</p>
-                      <ChevronLeftArrow />
+                    <div className="input">
+                      <img src={Mail} alt="" />
+                      <Field type="text" name="email" placeholder="E-mail" />
                     </div>
-                    {isOpenThree && (
-                      <div className="drop-down-options">
-                        {optionThree.map((option, index) => (
-                          <div
-                            key={index}
-                            onClick={() => handleOptionClick(option, 3)}
-                          >
-                            <p>{option}</p>
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className="error"
+                    />
+                  </div>
+                  <div className="input-wrapper">
+                    <div className="title">
+                      Can you drop your WhatsApp number ?
+                    </div>
+                    <div className="input">
+                      <img src={Phone} alt="" />
+                      <Field type="text" name="phone" placeholder="Phone" />
+                    </div>
+                    <ErrorMessage
+                      name="phone"
+                      component="div"
+                      className="error"
+                    />
                   </div>
                 </div>
-              </div>
 
-              <div className="btn">
-                <button type="submit">Next</button>
+                <div className="btn" onClick={() => setCount(2)}>
+                  <button>Next</button>
+                </div>
+                <div className="router">
+                  <h1>01</h1>
+                  <div className="border"></div>
+                  <h1>02</h1>
+                </div>
               </div>
+            )}
 
-              <div className="router">
-                <h1>01</h1>
-                <div className="border"></div>
-                <h1>02</h1>
+            {count === 2 && (
+              <div className="container-one">
+                <div className="input-container">
+                  <div className="input-wrapper">
+                    <div className="title">
+                      Go ahead and pick the program that suits you.
+                    </div>
+
+                    <div className="drop-down-wrapper">
+                      <div
+                        className="drop-down-select-content"
+                        onClick={() => toggleDropdown(1)}
+                      >
+                        <p>{selectedOptionOne || "Select an option"}</p>
+                        <ChevronLeftArrow />
+                      </div>
+                      {isOpenOne && (
+                        <div className="drop-down-options">
+                          {optionOne.map((option, index) => (
+                            <div
+                              key={index}
+                              onClick={() => handleOptionClick(option, 1)}
+                            >
+                              <p>{option}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="input-wrapper">
+                    <div className="title">
+                      Which time frame suits you best for your classes, AM or
+                      PM?
+                    </div>
+                    <div className="drop-down-wrapper">
+                      <div
+                        className="drop-down-select-content"
+                        onClick={() => toggleDropdown(2)}
+                      >
+                        <p>{selectedOptionTwo || "Select a batch"}</p>
+                        <ChevronLeftArrow />
+                      </div>
+                      {isOpenTwo && (
+                        <div className="drop-down-options">
+                          {optionTwo.map((option, index) => (
+                            <div
+                              key={index}
+                              onClick={() => handleOptionClick(option, 2)}
+                            >
+                              <p>{option}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="input-wrapper">
+                    <div className="title">
+                      Make your choice among the available courses.
+                    </div>
+                    <div className="drop-down-wrapper">
+                      <div
+                        className="drop-down-select-content"
+                        onClick={() => toggleDropdown(3)}
+                      >
+                        <p>{selectedOptionThree || "Select a Cluster"}</p>
+                        <ChevronLeftArrow />
+                      </div>
+                      {isOpenThree && (
+                        <div className="drop-down-options">
+                          {optionThree.map((option, index) => (
+                            <div
+                              key={index}
+                              onClick={() => handleOptionClick(option, 3)}
+                            >
+                              <p>{option}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                <div className="btn">
+                  <button type="submit">Next</button>
+                </div>
+
+                <div className="router">
+                  <div className="image">
+                    <Tick width={18} height={18} />
+                  </div>
+                  <div className="border"></div>
+                  <h1>02</h1>
+                </div>
               </div>
-            </div>
-          )}
-        </Form>
+            )}
+          </Form>
+        )}
       </Formik>
 
       {count === 3 && (

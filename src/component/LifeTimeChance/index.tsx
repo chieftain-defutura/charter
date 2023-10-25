@@ -67,8 +67,9 @@ const LifeTimeChance = () => {
               //   <span>Secure</span> your place before it's taken.
               // </h2>
               <div className="head">
-                <h3>Secure</h3>
-                <h2>your place before it's taken.</h2>
+                <h2>
+                  <span>Secure</span> your place before it's taken.
+                </h2>
               </div>
             )}
             <Secure count={count} setCount={setCount} />

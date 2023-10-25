@@ -9,8 +9,10 @@
     display: grid;
     grid-template-columns: 0.4fr 1fr;
     place-items: center;
+    gap: 32px;
     @media (max-width: 950px) {
       grid-template-columns: 1fr;
+      gap: 10px;
     }
     h2 {
       font-weight: 100;
